@@ -1,0 +1,33 @@
+/* body{
+    background-color: black;
+} */
+
+.library{
+    border: 2px solid red;
+    width: 25vw;
+    height: 100vh;
+    color: white;
+    background-color: black;
+}
+.trending{
+    border: 2px solid rgb(3, 222, 89);
+    width: 75vw;
+    height: 100vh;
+    color:white;
+    background-color: black;
+}
+
+.main{
+    display: flex;
+    padding: 10px 12px;
+    gap: 10px;
+    /* height: 100vh; */
+}
+
+.home-svg{
+    /* height: 42px; */
+    /* filter: invert(1); */
+}
+nav{
+    border: 2px solid black;
+}
