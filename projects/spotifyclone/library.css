@@ -1,0 +1,50 @@
+.top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 15px 0px 10px;
+    
+}
+.button button{
+    border-radius: 20px;
+    border: transparent;
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: medium;
+    color:white;
+    background-color:rgba(77, 79, 81, 0.627);
+    width:90px;
+    /* height:100px; */
+
+}
+
+.createplaylist{
+    /* border:2px solid green; */
+    height: 130px;
+    background-color:rgba(77, 79, 81, 0.627);
+    margin: 45px 15px;
+    border-radius: 12px;
+    padding: 10px 20px 30px 20px;
+    
+}
+
+.createplaylist span{
+    /* display: block; */
+    gap: 20px;
+    color:white;
+    font-weight: 500;
+}
+
+.createplaylist .buttonplay{
+    border-radius: 20px;
+    border: transparent;
+    padding: 5px;
+    font-weight: 600;
+    font-size: medium;
+    color:white;
+    background-color:rgba(77, 79, 81, 0.627);
+    width:80px;
+    /* height: 35px; */
+    margin-top: 15px;
+    margin-left: -5px;
+}
