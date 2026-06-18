@@ -72,6 +72,16 @@
     overflow-x: scroll;/* 'auto' is generally preferred over 'scroll' */
     scrollbar-width: none;
 }
+.card-container2 {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;  
+    margin-left: 30px;
+    margin-top: 30px;
+    overflow-x: scroll;/* 'auto' is generally preferred over 'scroll' */
+    scrollbar-width: none;
+}
 .arrow-svg{
     /* position:fixed;
     top:300px;
@@ -83,17 +93,17 @@
 
 .circle-nav-btn {
     /* Create the black circle */
-    visibility: hidden;
-    opacity: 1;
-    position:fixed;
-    top:280px;
+    /* visibility: hidden; */
+    opacity: 0;
+    position:sticky;
+    top:120px;
     right: 45px;
-    width: 45px;
-    height: 45px;
+    width: 42px;
+    height: 42px;
     background-color: #000000;
     border: none;
     border-radius: 50%;
-    /* z-index: 1; */
+    z-index: 2;
     
     /* Center the SVG inside the circle */
     display: flex;
@@ -106,5 +116,34 @@
 opacity: 1;
     visibility: visible;
     background-color: #000000;
+
+}
+
+.card-container2:hover .circle-nav-btn2{
+    z-index: 1000;
+opacity: 1;
+    visibility: visible;
+    background-color: #000000;
+
+}
+
+.circle-nav-btn2 {
+    /* Create the black circle */
+    /* visibility: hidden; */
+    opacity: 0;
+    position:sticky;
+    top:120px;
+    right: 45px;
+    width: 42px;
+    height: 42px;
+    background-color: #000000;
+    border: none;
+    border-radius: 50%;
+    z-index: 2;
+    
+    /* Center the SVG inside the circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }

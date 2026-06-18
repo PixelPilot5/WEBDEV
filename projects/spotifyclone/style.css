@@ -5,7 +5,7 @@ body{
 .library{
     /* border: 2px solid red; */
     width: 25vw;
-    height: 100vh;
+    height: 75vh;
     color: white;
     /* background-color: black; */
     /* background-color: rgba(128, 128, 128); */
@@ -17,11 +17,15 @@ body{
 .trending{
     /* border: 2px solid rgb(3, 222, 89); */
     width: 75vw;
-    height: 100vh;
+    height: 75vh;
     color:white;
     /* background-color: black; */
     /* background-color: rgba(128, 128, 128);*/
     background-color: rgba(128, 128, 128, 0.218);
+    overflow-y: hidden;
+    overflow-y: scroll;
+    scrollbar-width: auto;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 
 }
 
