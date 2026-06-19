@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="trendingsection.css">
     <link rel="stylesheet" href="library.css">
+    <link rel="stylesheet" href="playbar.css">
 
   </head>
   <body>
@@ -344,7 +345,30 @@
 
     </div>
 
+    <div class="playbar">
+      <div class="songinfo" style="display: flex;">
+        <div class="songimage">
+          <img src="" alt="">
+        </div>
+        <div class="songdetails">
+          <div class="songname">12345543</div>
+          <div class="songartist">12345654</div>
+        </div>
+      </div>
+      <div class="controls">
+
+        <audio controls>
+          <source src="songs/1.mp3" type="audio/ogg">
+          <source src="horse.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      <div class="volume">volume</div>
+      
+    </div>
+
 
     <script src="script.js">  </script>
+    <script src="playbarscript.js"></script>
   </body>
 </html>

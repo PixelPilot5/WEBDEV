@@ -1,0 +1,22 @@
+.playbar{
+    position: fixed;
+    color: white;
+    bottom: 0;
+    width: 99vw;
+    background-color: black;
+    height: 70px;
+    border-top: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.songimage{
+    border: 1px solid red;
+    width: 55px;
+    height: 55px;
+}
+.songinfo{
+    gap: 10px;
+    font-size: 15px;
+}
