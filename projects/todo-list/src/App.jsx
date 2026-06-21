@@ -6,11 +6,16 @@ import heroImg from './assets/hero.png'
 import './App.css'
 
 function App() {
+
 const [todoText, setTodoText] = useState("");
-const [todos, setTodos] = useState([]);
+const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem('todo');
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
 useEffect(() => {
-  localStorage.setItem('todo', JSON.stringify(todos));
-}, [todos]);
+    localStorage.setItem('todo', JSON.stringify(todos));
+  }, [todos]);
+
   const saveTodo=()=>{
     console.log(todoText);
     if (todoText.trim().length === 0) return;
@@ -22,6 +27,14 @@ useEffect(() => {
     setTodos([...todos, newTodoItem]); 
     setTodoText("");
   }
+
+  const toggledone=(id)=>{
+   setTodos(todos.map(t => t.id === id ? { ...t, isCompleted: !t.isCompleted } : t))
+
+
+  }
+  const [showFinished, setShowFinished] = useState(true);
+  const visibleTodos = showFinished ? todos : todos.filter(todo => !todo.isCompleted);
 
   return (
     <>
@@ -36,19 +49,19 @@ useEffect(() => {
     <button className="bg-blue-500 text-white rounded-md p-2 w-[10vw] mr-4 cursor-pointer" onClick={saveTodo}>Save</button>
   </div>
   <div className='m-3  flex gap-2'>
-    <input type="checkbox"/>
-    <label className='gap-4'>Show Finished</label>
+    <input type="checkbox" checked={showFinished} onChange={(e) => setShowFinished(e.target.checked)}/>
+    <label className='gap-4 '>Show Finished</label>
   </div>
   <div className="line h-0.5 bg-black w-[90%] mx-auto"></div>
   <div className="YourTodos">
     <h1 className='font-bold text-2xl m-5'>Your Todos</h1>
     <div className="todos">
 <ul className="mt-4">
-        {todos.map((item) => (
+        {visibleTodos.map((item) => (
           <div key={item.id} className="p-2 flex items-center gap-2 justify-between">
             <div className='flex items-center gap-2'>
-            <input type='checkbox'/>
-            <label for= {item.id} >
+            <input type='checkbox' onClick={()=>toggledone(item.id)} checked={item.isCompleted}/>
+            <label for= {item.id}  className={item.isCompleted ? 'line-through' : ''}>
               {item.todo}
             </label>
             </div>
