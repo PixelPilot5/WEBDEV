@@ -5,8 +5,8 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 
-function App() {
 
+function App() {
 const [todoText, setTodoText] = useState("");
 const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem('todo');
@@ -35,7 +35,17 @@ useEffect(() => {
   }
   const [showFinished, setShowFinished] = useState(true);
   const visibleTodos = showFinished ? todos : todos.filter(todo => !todo.isCompleted);
+  const handledelete=(id)=>{
+    setTodos(todos.filter(t => t.id !== id));
+    // alert("Todo deleted successfully");
+  }
 
+  const handleedit=(id)=>{
+    let t=todos.filter(t=>t.id===id)
+    setTodoText(t[0].todo);
+    handledelete(id);
+  }
+  
   return (
     <>
 <div className="card text-black">
@@ -67,11 +77,11 @@ useEffect(() => {
             </div>
             <div className='flex gap-4'>
 
-          <button className="cursor-pointer" >
+          <button className="cursor-pointer" onClick={()=>handleedit(item.id)}>
             <img src="https://www.svgrepo.com/show/511909/edit-cover-1481.svg" alt="" height={18} width={18} />
           </button>
 
-          <button className="cursor-pointer" >
+          <button className="cursor-pointer"  onClick={()=>handledelete(item.id)}>
             <img src="https://www.svgrepo.com/show/502608/delete-2.svg" alt="" height={18} width={18} />
           </button>
             </div>
