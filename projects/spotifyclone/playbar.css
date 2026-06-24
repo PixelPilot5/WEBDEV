@@ -12,11 +12,74 @@
     margin-bottom: 5px;
 }
 .songimage{
-    border: 1px solid red;
+
     width: 55px;
     height: 55px;
 }
 .songinfo{
     gap: 10px;
     font-size: 15px;
+}
+
+.songimage img{
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.ctrl-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.main-play-btn {
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.playback-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+.time-stamp {
+    color: #a7a7a7;
+    font-size: 11px;
+}
+
+/* Range Sliders Stylings */
+input[type="range"] {
+    flex-grow: 1;
+    height: 4px;
+    accent-color: #fff; /* White playback head */
+    cursor: pointer;
+}
+
+
+.volume-controls {
+    display: flex;
+    align-items: center;
+    margin-right: 70px;
+    gap: 15px;
+    width: 25%;
+    justify-content: flex-end;
+}
+.volume-bar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100px;
 }
