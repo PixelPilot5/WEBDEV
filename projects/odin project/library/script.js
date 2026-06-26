@@ -8,6 +8,10 @@ function Book(title, author, pages) {
   this.id=crypto.randomUUID();
 }
 
+Book.prototype.toggleReadStatus = function() {
+  this.isRead = !this.isRead; 
+};
+
 
 function addBookToLibrary(title,author,pages) {
 
@@ -23,6 +27,28 @@ function displayBooks() {
 
   for (let i = 0; i < myLibrary.length; i++) {
     createCard(myLibrary[i]);
+    
+  }
+
+const deleteBtn=document.getElementsByClassName("delete-btn");
+for (let i = 0; i < deleteBtn.length; i++) {
+    deleteBtn[i].addEventListener("click", (e) => {
+        const id = e.target.getAttribute("data-id");
+        deleteBook(id);
+    });
+  }
+
+
+const readbtn=document.getElementsByClassName("read-btn");
+for (let i = 0; i < readbtn.length; i++) {
+    readbtn[i].addEventListener("click", (e) => {
+        const id = e.target.getAttribute("data-id");
+const targetBook = myLibrary.find(book => book.id === id);
+if(targetBook){
+    targetBook.toggleReadStatus();
+    displayBooks();
+}
+    });
   }
 }
 
@@ -37,14 +63,17 @@ displayBooks();
 function createCard(book) {
     const card = document.createElement("div");
     card.classList.add("card");
+    const statusClass = book.isRead ? "btn-read" : "btn-unread";
     card.innerHTML = `
         <h2>${book.title}</h2>
         <p>${book.author}</p>
         <p>${book.pages} pages</p>
-        <button>Read</button>
+        <button class="read-btn ${statusClass}" data-id="${book.id}">Read</button>
         <button class="delete-btn"data-id="${book.id}">Delete</button>
     `;
     document.querySelector(".card-container").appendChild(card);
+
+    
 }
 
 const addBtn = document.getElementById("add-btn");
@@ -64,15 +93,8 @@ showForm.addEventListener("submit", (e)=>{
 showForm.reset();
     showForm.style.visibility = "hidden";
 });
-
-const readBtn=document.querySelector(".readBtn");
-const deleteBtn=document.querySelector(".delete-btn");
 function deleteBook(bookId) {
   myLibrary = myLibrary.filter(book => book.id !== bookId);
   displayBooks();
 }
 
-deleteBtn.addEventListener("click",(e)=>{
-    const id=deleteBtn.getAttribute("data-id");
-    deleteBook(id);
-})

@@ -44,3 +44,14 @@
     padding: 10px;
     visibility: hidden;
 }
+
+.btn-read {
+  background-color: #2ecc71; /* Emerald Green */
+  color: white;
+}
+
+/* Styling for when the book is NOT read */
+.btn-unread {
+  background-color: #e74c3c; /* Tomato Red */
+  color: white;
+}
