@@ -64,11 +64,12 @@ function createCard(book) {
     const card = document.createElement("div");
     card.classList.add("card");
     const statusClass = book.isRead ? "btn-read" : "btn-unread";
+    const btntext = book.isRead ? "Read" : "Unread";
     card.innerHTML = `
         <h2>${book.title}</h2>
         <p>${book.author}</p>
         <p>${book.pages} pages</p>
-        <button class="read-btn ${statusClass}" data-id="${book.id}">Read</button>
+        <button class="read-btn ${statusClass}" data-id="${book.id}">${btntext}</button>
         <button class="delete-btn"data-id="${book.id}">Delete</button>
     `;
     document.querySelector(".card-container").appendChild(card);
