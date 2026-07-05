@@ -8,7 +8,13 @@ const gameboard = (function gameboard() {
   const getgameboardrarray = () => {
     return gameboardarray;
   }
-  return { placemarker, getgameboardrarray };
+
+  const resetBoard = () => {
+    gameboardarray = ['', '', '', '', '', '', '', '', ''];
+  };
+
+
+  return { placemarker, getgameboardrarray ,resetBoard};
 })();
 
 function createPlayer(name) {
@@ -47,37 +53,69 @@ const gamecontroller = (function gamecontroller() {
 
   }
 
-  return { getroundnumber, giveroundnumber, activeplayer, wincondition };
+  const resetGame = () => {
+    roundnumber = 0;
+  };
+
+  return { getroundnumber, giveroundnumber, activeplayer, wincondition,resetGame };
 
 
 })();
 let player1 = createPlayer(prompt("enter player 1 name"));
 let player2 = createPlayer(prompt("enter player 2 name"));
+let names=document.querySelectorAll(".playersname div h2");
+names[0].textContent="Player 1 ("+player1.name+") : O";
+names[1].textContent="Player 2 ("+player2.name+") : X";
+function playround(a){
+  if (gamecontroller.getroundnumber() >= 9 || gamecontroller.wincondition()) return;
 
-while (gamecontroller.getroundnumber() < 9) {
-  console.log(gameboard.getgameboardrarray());
-  let a = prompt("enter the index");
-  if (gameboard.getgameboardrarray()[a] == "x" || gameboard.getgameboardrarray()[a] == "o") {
-    console.log("already filled");
-    continue;
-  }
-  gameboard.placemarker(gamecontroller.activeplayer(), a);
-  if (gamecontroller.wincondition()) {
-    console.log(gameboard.getgameboardrarray());
 
-    if (gamecontroller.activeplayer() == 'o') {
-      console.log(player1.name, " wins");
-    } else {
-      console.log(player2.name, " wins");
+    if (gameboard.getgameboardrarray()[a] == "x" || gameboard.getgameboardrarray()[a] == "o") {
+      console.log("already filled");
+      return;
     }
-    break;
+
+    const currentMarker = gamecontroller.activeplayer();
+  const currentPlayer = currentMarker === 'o' ? player1 : player2;
+
+
+    gameboard.placemarker(currentMarker, a);
+    displayarray();
+    if (gamecontroller.wincondition()) {
+      console.log(`${currentPlayer.name} wins`);
+      alert(`${currentPlayer.name} wins`);
+      return;
+    }
+    gamecontroller.giveroundnumber();
+    
+  if (gamecontroller.getroundnumber() === 9) {
+    // console.log(gameboard.getgameboardrarray());
+    console.log("draw");
+    alert("draw");
+    return;
   }
-  gamecontroller.giveroundnumber();
-
-
-
 }
-if (!gamecontroller.wincondition()) {
-  console.log(gameboard.getgameboardrarray());
-  console.log("draw");
+
+
+function displayarray() {
+  const boardarray = gameboard.getgameboardrarray();
+  for (let i = 0; i < boardarray.length; i++) {
+    let cell=document.getElementById(i);
+    if(cell) cell.textContent = boardarray[i];
+  }
 }
+
+let cell = document.querySelectorAll(".cell");
+cell.forEach((cell) => {
+  cell.addEventListener("click", function () {
+    playround(this.id);
+  });
+});
+
+let restartgame=document.querySelector(".reset");
+restartgame.addEventListener("click",function(){
+  gameboard.resetBoard();
+  gamecontroller.resetGame();
+  displayarray();
+})
+

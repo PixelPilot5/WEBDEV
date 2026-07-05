@@ -1,8 +1,9 @@
 .container {
   display: inline-grid;
   width: 50vh;
-  height: 50vh  ;
-  grid-template-columns: auto auto auto;
+  height: 50vh;
+  grid-template-columns: calc(50vh/3) calc(50vh/3) calc(50vh/3);
+  grid-template-rows: calc(50vh/3) calc(50vh/3) calc(50vh/3);
   background-color: dodgerblue;
   padding: 10px;
 }
@@ -12,4 +13,5 @@
   padding: 10px;
   font-size: 30px;
   text-align: center;
+  cursor: pointer;
 }
