@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Show the Messages</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        a button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Messages</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Open</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+        <% messages.forEach(function(msg,i){ %>
+            <tr>
+                <td>
+                <%= msg.user %>
+                </td>
+                <td>
+                <%= msg.text %>
+                </td>
+                <td>
+                <%= msg.added %>
+                </td>
+                <td>
+                <a href="/message/<%= i %>">
+                    <button href="/new">Open</button>
+                </a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <a href="/new">
+        <button href="/new">New Message</button>
+    </a>
+</body>
+
+</html>
