@@ -1,7 +1,7 @@
    export default function viewmenu(){
     const getelement = document.getElementById("content");
     getelement.innerHTML=`       <div class="nav-links">
-            <a href="index.html">&larr; Back to Home</a>
+            <button id="back"> Back to Home</button>
         </div>
 
         <!-- Appetizers Section -->
@@ -66,6 +66,7 @@
                 <div class="item-description">Decadent dark chocolate cake with a molten center, served with vanilla bean ice cream.</div>
             </div>
         </div>`
+
    }
    
         

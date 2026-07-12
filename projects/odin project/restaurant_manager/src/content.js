@@ -20,9 +20,9 @@ export default function homePage(){
     p2.textContent = "Welcome to The Cozy Bistro, where passion meets the plate. Nestled in the heart of the city, we pride ourselves on crafting exceptional dishes made from locally sourced, seasonal ingredients. Whether you are joining us for a relaxed family dinner, a romantic evening, or a lively celebration with friends, our warm ambiance and attentive service ensure a dining experience you won't soon forget. Come for the food, stay for the memories.";
     getelement.appendChild(p2);
 
-    const a = document.createElement("a");
-    a.classList.add("cta-btn");
-    a.href = "#menu";
-    a.textContent = "View Our Menu";
-    getelement.appendChild(a);
+    const button = document.createElement("button");
+    button.classList.add("cta-btn");
+    button.textContent = "View Our Menu";
+    getelement.appendChild(button);
+
 }

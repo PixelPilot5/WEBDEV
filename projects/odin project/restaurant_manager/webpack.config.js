@@ -20,9 +20,16 @@ export default {
     }),
   ],
   module: {
-    rules: [
+    rules: [{
+        test: /\.lazy\.css$/i,
+        use: [
+          { loader: "style-loader", options: { injectType: "lazyStyleTag" } },
+          { loader: "css-loader" },
+        ],
+      },
       {
         test: /\.css$/i,
+        exclude: /\.lazy\.css$/i,
         use: ["style-loader", "css-loader"],
       },
       {
